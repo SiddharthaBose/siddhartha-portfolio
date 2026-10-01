@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
+const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
+
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
+  output: isGithubActions ? 'export' : undefined,
+  basePath: isGithubActions ? '/siddhartha-portfolio' : '',
   images: {
     unoptimized: true,
   },
