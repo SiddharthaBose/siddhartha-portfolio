@@ -7,12 +7,6 @@ import { portfolioData } from "@/data/portfolioData";
 export default function QuickConnectFab() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const directMailtoUrl = `mailto:${portfolioData.personal.email}?cc=bose.sid99@gmail.com&subject=${encodeURIComponent(
-    "Inquiry for Siddhartha Bose - Technical Consultant"
-  )}&body=${encodeURIComponent(
-    "Hi Siddhartha,\n\nI came across your portfolio and would like to connect with you regarding..."
-  )}`;
-
   return (
     <aside aria-label="Quick Connect Assistant" className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
       {/* Expanded Quick Card */}
@@ -34,7 +28,7 @@ export default function QuickConnectFab() {
           </div>
 
           <p className="text-xs text-cyber-light mb-4 font-body">
-            Have a question about Oracle OBDX, Fintech consulting, or an opportunity?
+            Do you have any questions regarding any opportunities for me? Please click below:
           </p>
 
           <div className="flex flex-col gap-2">
@@ -45,17 +39,6 @@ export default function QuickConnectFab() {
               className="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-cyber-card hover:bg-cyber-orange hover:text-black text-white text-xs font-mono font-bold border border-white/10 transition-colors group"
             >
               <span>Ask Me Anything Form</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-
-            <a
-              href={directMailtoUrl}
-              onClick={() => {
-                window.location.href = directMailtoUrl;
-              }}
-              className="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-cyber-card hover:bg-cyber-blue hover:text-white text-cyber-light text-xs font-mono font-bold border border-white/10 transition-colors"
-            >
-              <span>Email Directly</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>

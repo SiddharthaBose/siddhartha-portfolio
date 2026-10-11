@@ -175,8 +175,8 @@ export default function ContactSection() {
                       {portfolioData.personal.phones.map((ph) => (
                         <span
                           key={ph}
-                          className="text-sm text-white font-medium select-all cursor-text block"
-                          title="Select to copy phone number"
+                          className="text-sm text-white font-medium hover:text-cyber-blue transition-colors block cursor-pointer"
+                          onClick={(e) => e.preventDefault()}
                         >
                           {ph}
                         </span>
