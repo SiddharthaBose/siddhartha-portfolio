@@ -111,7 +111,7 @@ export const portfolioData = {
     email: "sid.bose115@gmail.com",
     emails: ["sid.bose115@gmail.com", "bose.sid99@gmail.com"],
     phones: ["+998 507302898", "+91 8974975602", "+91 9600844112"],
-    resumeUrl: "https://drive.google.com/file/d/1e9KnIgSpvbBi3IPkVTYfbNcF8_hhxCwk/view?usp=sharing",
+    resumeUrl: "https://drive.google.com/file/d/1fJTVL6Yuljp3eBUDR_8TsdDnT1Voj2p_/view?usp=sharing",
     askAnythingUrl: "https://forms.gle/k8DpYhmSyAQhvrqcA",
     bioSummary:
       "A Technical Consultant with 4+ years of experience in the Fintech domain, working closely with clients onsite to provide technical development and production support for Oracle Banking Digital Experience (OBDX) with a strong focus on troubleshooting, issue resolution, and ensuring seamless business operations.",
@@ -141,7 +141,7 @@ export const portfolioData = {
   socialLinks: [
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/siddharthabose-0b163a172/",
+      url: "https://www.linkedin.com/in/siddhartha-bose-0b163a172/",
       icon: "linkedin",
       category: "primary",
     },

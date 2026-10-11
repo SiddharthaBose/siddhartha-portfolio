@@ -42,35 +42,42 @@ export default function ContactSection() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+    const emailSubject = formData.subject.trim() || `Portfolio Contact from ${formData.name}`;
+    const emailBody = `Name: ${formData.name}\nEmail: ${formData.email}\nSubject: ${emailSubject}\n\nMessage:\n${formData.message}`;
 
-      if (res.ok) {
-        setSubmitStatus("success");
-        setStatusMessage(
-          "Thank you! Your message has been sent directly to Siddhartha Bose."
-        );
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        throw new Error("Server submission error");
-      }
+    const mailtoLink = `mailto:${portfolioData.personal.email}?cc=bose.sid99@gmail.com&subject=${encodeURIComponent(
+      emailSubject
+    )}&body=${encodeURIComponent(emailBody)}`;
+
+    // 1. Immediately launch user's default email client pre-filled with the dispatch details
+    window.location.href = mailtoLink;
+
+    // 2. Also send via FormSubmit API in the background so Siddhartha receives the dispatch directly
+    try {
+      await fetch("https://formsubmit.co/ajax/sid.bose115@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _subject: `[Portfolio Dispatch] ${emailSubject}`,
+          _cc: "bose.sid99@gmail.com",
+          message: formData.message,
+        }),
+      });
     } catch {
-      // Graceful fallback to client mailto
-      setSubmitStatus("success");
-      setStatusMessage("Opening default mail application to send enquiry...");
-      const mailtoLink = `mailto:${portfolioData.personal.email}?subject=${encodeURIComponent(
-        formData.subject
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
-      )}`;
-      window.location.href = mailtoLink;
-    } finally {
-      setIsSubmitting(false);
+      // Ignored - mailto link was already triggered directly
     }
+
+    setSubmitStatus("success");
+    setStatusMessage(
+      "Dispatch prepared! Your email client has been opened with your pre-filled message to send directly to Siddhartha Bose."
+    );
+    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSubmitting(false);
   };
 
   const getSocialIcon = (iconName: string) => {
@@ -166,13 +173,13 @@ export default function ContactSection() {
                     </span>
                     <div className="flex flex-col gap-1">
                       {portfolioData.personal.phones.map((ph) => (
-                        <a
+                        <span
                           key={ph}
-                          href={`tel:${ph.replace(/\s+/g, "")}`}
-                          className="text-sm text-white font-medium hover:text-cyber-blue transition-colors block"
+                          className="text-sm text-white font-medium select-all cursor-text block"
+                          title="Select to copy phone number"
                         >
                           {ph}
-                        </a>
+                        </span>
                       ))}
                     </div>
                   </div>

@@ -7,6 +7,12 @@ import { portfolioData } from "@/data/portfolioData";
 export default function QuickConnectFab() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const directMailtoUrl = `mailto:${portfolioData.personal.email}?cc=bose.sid99@gmail.com&subject=${encodeURIComponent(
+    "Inquiry for Siddhartha Bose - Technical Consultant"
+  )}&body=${encodeURIComponent(
+    "Hi Siddhartha,\n\nI came across your portfolio and would like to connect with you regarding..."
+  )}`;
+
   return (
     <aside aria-label="Quick Connect Assistant" className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
       {/* Expanded Quick Card */}
@@ -43,7 +49,10 @@ export default function QuickConnectFab() {
             </a>
 
             <a
-              href={`mailto:${portfolioData.personal.email}`}
+              href={directMailtoUrl}
+              onClick={() => {
+                window.location.href = directMailtoUrl;
+              }}
               className="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-cyber-card hover:bg-cyber-blue hover:text-white text-cyber-light text-xs font-mono font-bold border border-white/10 transition-colors"
             >
               <span>Email Directly</span>

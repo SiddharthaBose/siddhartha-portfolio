@@ -117,7 +117,7 @@ export default function Hero() {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/siddharthabose-0b163a172/"
+            href="https://www.linkedin.com/in/siddhartha-bose-0b163a172/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-3.5 bg-cyber-card/80 hover:bg-cyber-card text-cyber-light hover:text-white font-mono text-xs tracking-wider uppercase border border-white/10 hover:border-cyber-blue/60 rounded-full transition-all duration-300 backdrop-blur-sm"
